@@ -206,6 +206,8 @@ public class RuntimeAnalysis {
 
 
 
+
+
         //task 2
         numData = 1000000;
         int[] cutoffs = {2, 4, 8, 16, 32, 64, 128};
