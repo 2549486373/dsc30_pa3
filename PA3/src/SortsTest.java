@@ -18,6 +18,7 @@ class SortsTest {
 
         Integer[] result1 = {1, 3, 4, 5};
         sort.InsertionSort(test1, 0, 3);
+
         assertArrayEquals(result1, test1.toArray());
 
 
@@ -48,13 +49,22 @@ class SortsTest {
         Sorts sort = new Sorts();
         ArrayList<Integer> arr1 = new ArrayList<>();
         arr1.add(1);
+        arr1.add(93241);
         arr1.add(9);
-        arr1.add(6);
+        arr1.add(-10);
         arr1.add(0);
         arr1.add(4);
+        arr1.add(10234);
+        arr1.add(0);
+        arr1.add(-19434);
+        arr1.add(123);
 
-        sort.QuickSort(arr1, 0, 4);
-        Integer[] result1 = {0, 1, 4, 6, 9};
+
+        System.out.println(arr1);
+        sort.QuickSort(arr1, 0, 9);
+
+        Integer[] result1 = {-19434, -10, 0, 0, 1, 4, 9, 123, 10234, 93241};
+        System.out.println(arr1);
         assertArrayEquals(result1, arr1.toArray());
 
         ArrayList<Integer> arr2 = new ArrayList<>();
@@ -83,13 +93,18 @@ class SortsTest {
         Sorts sort = new Sorts();
         ArrayList<Integer> arr1 = new ArrayList<>();
         arr1.add(1);
+        arr1.add(93241);
         arr1.add(9);
         arr1.add(6);
         arr1.add(0);
         arr1.add(4);
+        arr1.add(10234);
+        arr1.add(0);
+        arr1.add(-19434);
+        arr1.add(123);
 
         sort.Modified_QuickSort(arr1, 0, 4, 3);
-        Integer[] result1 = {0, 1, 4, 6, 9};
+        Integer[] result1 = {0, 1, 6, 9, 93241, 4, 10234, 0, -19434, 123};
         assertArrayEquals(result1, arr1.toArray());
 
         ArrayList<Integer> arr2 = new ArrayList<>();

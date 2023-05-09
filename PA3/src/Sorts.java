@@ -95,11 +95,10 @@ public class Sorts {
      * @param end The final index of the subsection of Arraylist we want to sort
      */
     public void QuickSort(ArrayList<Integer> list, int start, int end) {
-        if (start < end) {
+        if (start <= end) {
             int pivotIndex = partition(list, start, end);
-
             QuickSort(list, pivotIndex + 1, end);
-            QuickSort(list, start, pivotIndex);
+            QuickSort(list, start, pivotIndex - 1);
         }
     }
 
@@ -110,6 +109,7 @@ public class Sorts {
      * */
     private int partition(ArrayList<Integer> arr, int l, int h) {
         int mid = (l + h) / 2;
+
         Integer pivot = arr.get(mid);
         int i = l;
         int j = h;
@@ -129,26 +129,43 @@ public class Sorts {
                 Integer temp = arr.get(i);
                 arr.set(i, arr.get(j));
                 arr.set(j, temp);
-                i++;
-                j--;
+                if (i == mid) {
+                    mid = j;
+                    if (j < arr.size() - 1) {
+                        j++;
+                    }
+
+                    i++;
+                } else if (j == mid) {
+                    mid = i;
+                    if (i > 0) {
+                        i--;
+                    }
+                    j--;
+
+                } else {
+                    i++;
+                    j--;
+                }
+
+
             } else {
                 break;
             }
 
         }
-
         return mid;
     }
     /**
      * This method perform a*/
     public void Modified_QuickSort(ArrayList<Integer> list, int start, int end, int cutoff) {
-        if (start < end) {
+        if (start <= end) {
             int pivotIndex = partition(list, start, end);
             if (end - start <= cutoff) {
                 InsertionSort(list, start, end);
             } else {
                 Modified_QuickSort(list, pivotIndex + 1, end, cutoff);
-                Modified_QuickSort(list, start, pivotIndex , cutoff);
+                Modified_QuickSort(list, start, pivotIndex - 1, cutoff);
             }
         }
     }
